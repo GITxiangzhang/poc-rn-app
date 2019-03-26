@@ -1,15 +1,16 @@
 package com.pocrnapp;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.react.ReactInstanceManager;
@@ -17,13 +18,17 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.facebook.react.shell.MainReactPackage;
+import com.pocrnapp.R;
+import com.pocrnapp.dialog.AddItemDialog;
+import com.pocrnapp.ui.fragment.HomeFragment;
+import com.pocrnapp.ui.fragment.SecondFragment;
+import com.pocrnapp.ui.fragment.ThirdFragment;
 
-public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler,
-        BottomNavigationView.OnNavigationItemSelectedListener {
+
+public class MainActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler,
+        BottomNavigationView.OnNavigationItemSelectedListener, AddItemDialog.OnAddItemConfirmed {
     private ReactRootView mReactRootView;
     private ReactInstanceManager mReactInstanceManager;
     private LinearLayout myreact;
@@ -31,6 +36,12 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
     private BottomNavigationView bottomNavigationView;
     private MenuItem menuItem;
     private ReactContext reactContext;
+
+    private HomeFragment fragmentHome;
+    private SecondFragment secondFragment;
+    private ThirdFragment thirdFragment;
+    private Fragment[] fragments;
+    private int lastfragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +62,48 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 
     private void initView() {
         //ReactNative相关
-        myreact = (LinearLayout) findViewById(R.id.react_root_layout);//原生布局中的view
-        mReactRootView = new ReactRootView(this);
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setCurrentActivity(this)
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModulePath("index")
-                .addPackage(new MainReactPackage())
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
-        mReactRootView.startReactApplication(mReactInstanceManager, "pocRNApp", null);//启动入口
-        myreact.addView(mReactRootView);//添加react布局
-
+//        myreact = (LinearLayout) findViewById(R.id.react_root_layout);//原生布局中的view
+//        mReactRootView = new ReactRootView(this);
+//        mReactInstanceManager = ReactInstanceManager.builder()
+//                .setApplication(getApplication())
+//                .setCurrentActivity(this)
+//                .setBundleAssetName("index.android.bundle")
+//                .setJSMainModulePath("index")
+//                .addPackage(new MainReactPackage())
+//                .setUseDeveloperSupport(BuildConfig.DEBUG)
+//                .setInitialLifecycleState(LifecycleState.RESUMED)
+//                .build();
+//        mReactRootView.startReactApplication(mReactInstanceManager, "pocRNApp", null);//启动入口
+//        myreact.addView(mReactRootView);//添加react布局
         bottomNavigationView = findViewById(R.id.bnv);
+        initFragment();
     }
+
+    private void initFragment() {
+
+        fragmentHome = new HomeFragment();
+        secondFragment = new SecondFragment();
+        thirdFragment = new ThirdFragment();
+        fragments = new Fragment[]{fragmentHome, secondFragment, thirdFragment};
+        lastfragment = 0;
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainview, fragmentHome).show(fragmentHome).commit();
+
+    }
+
+    //切换Fragment
+    private void switchFragment(int lastfragment, int index) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.hide(fragments[lastfragment]);//隐藏上个Fragment
+        if (fragments[index].isAdded() == false) {
+            transaction.add(R.id.mainview, fragments[index]);
+
+
+        }
+        transaction.show(fragments[index]).commitAllowingStateLoss();
+
+
+    }
+
 
     @Override
     public void invokeDefaultOnBackPressed() {
@@ -126,26 +163,34 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
         int itemId = menuItem.getItemId();
         switch (itemId) {
             case R.id.item1:
-               // Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
-                sendJumpPageEvent(1);
-                break;
+
+                if (lastfragment != 0) {
+                    switchFragment(lastfragment, 0);
+                    lastfragment = 0;
+
+                }
+                return true;
+
             case R.id.item2:
-               // Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
-                sendJumpPageEvent(2);
-                break;
+                if (lastfragment != 1) {
+                    switchFragment(lastfragment, 1);
+                    lastfragment = 1;
+
+                }
+                return true;
             case R.id.item3:
-              //  Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
-                sendJumpPageEvent(3);
-                break;
-            case R.id.item4:
-               // Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
-                sendJumpPageEvent(4);
-                break;
+                if (lastfragment != 2) {
+                    switchFragment(lastfragment, 2);
+                    lastfragment = 2;
+
+                }
+                return true;
+
         }
-        return true;
+        return false;
     }
 
-    private void sendJumpPageEvent(int page){
+    private void sendJumpPageEvent(int page) {
         WritableMap params = Arguments.createMap();
         params.putInt("data", page);
         sendEvent(getReactContext(), "pageData", params);
@@ -164,4 +209,8 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 mReactInstanceManager.getCurrentReactContext() : null;
     }
 
+    @Override
+    public void onAddItemConfirmed(String itemName) {
+        Toast.makeText(this, itemName, Toast.LENGTH_SHORT).show();
+    }
 }

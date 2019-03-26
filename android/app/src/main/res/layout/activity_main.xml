@@ -8,22 +8,29 @@
 
 
     <LinearLayout
-        android:id="@+id/react_root_layout"
+        android:id="@+id/mainview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bnv"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/bnv"
+        android:background="#707070"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bnv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#cccccc"
+        app:itemIconTint="@color/color_state_menu_navi"
+        app:itemTextColor="@color/color_state_menu_navi"
         app:menu="@menu/menu"
         tools:layout_editor_absoluteX="44dp">
 
     </android.support.design.widget.BottomNavigationView>
+
 
 </RelativeLayout>

@@ -8,6 +8,7 @@
         android:title="页面1"
         />
     <item
+
         android:id="@+id/item2"
         android:icon="@drawable/tab_record_selector"
         android:title="页面2"
@@ -17,11 +18,13 @@
         android:icon="@drawable/tab_setting_selector"
         android:title="页面3"
         />
-    <item
-        android:id="@+id/item4"
-        android:icon="@drawable/tab_sign_selector"
-        android:title="页面4"
-        />
+
+
+    <!--<item-->
+        <!--android:id="@+id/item4"-->
+        <!--android:icon="@drawable/tab_sign_selector"-->
+        <!--android:title="页面4"-->
+        <!--/>-->
 
 
 </menu>
