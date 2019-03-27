@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#F0F8FF"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1296db"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Native list page"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">   <!--去往map界面 -->
+            <RelativeLayout
+                android:id="@+id/layout_web"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#ffffff"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_1"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="#F0F8FF"
+                    android:src="@drawable/earth"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_1"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:id="@+id/tv_web_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:text="go to web view"
+                        android:textColor="#1296db"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:text="from native page to web page "
+                        android:textColor="#B0C4DE"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <!--去往web界面 -->
+            <RelativeLayout
+
+                android:id="@+id/layout_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#ffffff"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="#F0F8FF"
+                    android:src="@drawable/location"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_2"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:paddingBottom="5dp"
+                        android:id="@+id/tv_map_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="map"
+                        android:textColor="#1296db"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:text="get targeting"
+                        android:textColor="#B0C4DE"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <!--去往相机界面 -->
+            <RelativeLayout
+                android:id="@+id/layout_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#ffffff"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="#F0F8FF"
+                    android:src="@drawable/scan"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_3"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:paddingBottom="5dp"
+                        android:id="@+id/tv_camera_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="camera"
+                        android:textColor="#1296db"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:text="wake up the camera"
+                        android:textColor="#B0C4DE"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <!--预留功能 -->
+            <RelativeLayout
+                android:id="@+id/layout_reserved"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#ffffff"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="#F0F8FF"
+                    android:src="@drawable/smile"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:paddingBottom="5dp"
+                        android:id="@+id/tv_reserved_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="reserved"
+                        android:textColor="#1296db"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_reserved_1"
+                        android:layout_alignLeft="@id/tv_reserved_1"
+                        android:paddingTop="3dp"
+                        android:text="reserved"
+                        android:textColor="#B0C4DE"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

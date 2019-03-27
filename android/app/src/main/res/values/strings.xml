@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">poc_rn_app</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="activity_name_detection">TFL Detect</string>
+    <string name="page1">页面1</string>
 </resources>
