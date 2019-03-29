@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Button, AlertIOS,  NativeModules, DeviceEventEmitter} from 'react-native';
+import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 import listData from '../mockup/home'
-import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 const NativeDialog = NativeModules.JsAndroid
 
 class List extends React.Component {
@@ -16,19 +16,25 @@ class List extends React.Component {
     this.updateEvents = this.updateEvents.bind(this)
   }
 
-  componentDidMount () {
-    // this.props.navigation.navigate('List')
+  componentWillMount () {
     this.fetchData()
     this.testDataListener = DeviceEventEmitter.addListener('pageData', e => {//for Android
+      console.log('sss', e)
       //更新状态及其他操作
+      alert(e.data)
       this.setState(prevState => ({
         data: [...prevState.data,
           {
-            id: prevState.data.length + 1,
+            // id: this.state.data.length + 1,
+            id: 5,
             value: e.data
           }
         ]
       }))
+
+      setTimeout(() => {
+        console.log(this.state.data)
+      }, 0);
     });
   }
 
@@ -37,18 +43,7 @@ class List extends React.Component {
   }
 
   updateEvents() {
-    NativeModules.JsAndroid.showDialogFragment(msg => {
-      this.setState(prevState => ({
-        data: [...prevState.data,
-          {
-            id: prevState.data.length + 1,
-            value: msg
-          }
-        ]
-      }))
-    }, err => {
-      console.log(err);
-    })
+    NativeModules.JsAndroid.showDialogFragment(msg => { console.log(msg); }, err => { console.log(err); })
   }
 
   fetchData () {
@@ -101,13 +96,6 @@ class List extends React.Component {
   }
 }
 
-// const HomeStack = createStackNavigator({ List }, {
-//   defaultNavigationOptions: {
-//     title: 'Welcome'
-//   }
-// });
-
-// export default createAppContainer(HomeStack);
 export default List
 
 const styles = StyleSheet.create({

@@ -1,8 +1,10 @@
 rootProject.name = 'pocRNApp'
-include ':react-native-camera'
-project(':react-native-camera').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-camera/android')
-include ':react-native-baidumap-sdk'
-project(':react-native-baidumap-sdk').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-baidumap-sdk/lib/android')
+//include ':react-native-baidu-map'
+//project(':react-native-baidu-map').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-baidu-map/android')
+//include ':react-native-camera'
+//project(':react-native-camera').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-camera/android')
+//include ':react-native-baidumap-sdk'
+//project(':react-native-baidumap-sdk').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-baidumap-sdk/lib/android')
 include ':react-native-gesture-handler'
 project(':react-native-gesture-handler').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gesture-handler/android')
 

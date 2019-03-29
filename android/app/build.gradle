@@ -141,8 +141,9 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-camera')
-    implementation project(':react-native-baidumap-sdk')
+//    implementation project(':react-native-baidu-map')
+//    implementation project(':react-native-camera')
+//    implementation project(':react-native-baidumap-sdk')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation fileTree(include: ['*.jar'], dir: 'libs')

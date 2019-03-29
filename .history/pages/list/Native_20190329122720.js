@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Button, AlertIOS,  NativeModules, DeviceEventEmitter} from 'react-native';
 import listData from '../mockup/home'
-import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 const NativeDialog = NativeModules.JsAndroid
 
 class List extends React.Component {
@@ -17,7 +16,6 @@ class List extends React.Component {
   }
 
   componentDidMount () {
-    // this.props.navigation.navigate('List')
     this.fetchData()
     this.testDataListener = DeviceEventEmitter.addListener('pageData', e => {//for Android
       //更新状态及其他操作
@@ -46,6 +44,11 @@ class List extends React.Component {
           }
         ]
       }))
+
+      this.testDataListener = DeviceEventEmitter.addListener('pageData', e => {//for Android
+        //更新状态及其他操作
+        console.log(e.data)
+      });
     }, err => {
       console.log(err);
     })
@@ -101,13 +104,6 @@ class List extends React.Component {
   }
 }
 
-// const HomeStack = createStackNavigator({ List }, {
-//   defaultNavigationOptions: {
-//     title: 'Welcome'
-//   }
-// });
-
-// export default createAppContainer(HomeStack);
 export default List
 
 const styles = StyleSheet.create({

@@ -101,11 +101,11 @@ class List extends React.Component {
   }
 }
 
-// const HomeStack = createStackNavigator({ List }, {
-//   defaultNavigationOptions: {
-//     title: 'Welcome'
-//   }
-// });
+const HomeStack = createStackNavigator({ List }, {
+  defaultNavigationOptions: {
+    title: 'Welcome'
+  }
+});
 
 // export default createAppContainer(HomeStack);
 export default List

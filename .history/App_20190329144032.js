@@ -41,14 +41,14 @@ export default class App extends Component<Props> {
     });
   }
   render() {
-    // return (
-    //   <View style={styles.container}>
-    //     <TouchableOpacity onPress={this.clickFun}>
-    //       <Text style={styles.welcome}>{this.state.greetings}</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // )
-    return  <Home></Home>
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={this.clickFun}>
+          <Text style={styles.welcome}>{this.state.greetings}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+    // return  <Home></Home>
   }
 }
 

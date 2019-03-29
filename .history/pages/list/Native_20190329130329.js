@@ -17,7 +17,6 @@ class List extends React.Component {
   }
 
   componentDidMount () {
-    // this.props.navigation.navigate('List')
     this.fetchData()
     this.testDataListener = DeviceEventEmitter.addListener('pageData', e => {//for Android
       //更新状态及其他操作
@@ -102,6 +101,9 @@ class List extends React.Component {
 }
 
 // const HomeStack = createStackNavigator({ List }, {
+//   navigationOptions: {
+//     tabBarLabel: 'Home!',
+//   },
 //   defaultNavigationOptions: {
 //     title: 'Welcome'
 //   }

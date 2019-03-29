@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 // import {Platform, StyleSheet, Text, View} from 'react-native';
 // import Home from './pages/Home'
-import Home from './pages/list/Native'
+// import Home from './pages/list/Native'
 import { Platform, StyleSheet, Text, View, ToastAndroid, DeviceEventEmitter, NativeModules, TouchableOpacity } from 'react-native';
 // import MyList from './pages/list/List'
 const instructions = Platform.select({
@@ -41,14 +41,14 @@ export default class App extends Component<Props> {
     });
   }
   render() {
-    // return (
-    //   <View style={styles.container}>
-    //     <TouchableOpacity onPress={this.clickFun}>
-    //       <Text style={styles.welcome}>{this.state.greetings}</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // )
-    return  <Home></Home>
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={this.clickFun}>
+          <Text style={styles.welcome}>{this.state.greetings}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+    // return  <Home></Home>
   }
 }
 

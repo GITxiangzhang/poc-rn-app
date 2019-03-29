@@ -49,6 +49,7 @@ export default class App extends Component<Props> {
     //   </View>
     // )
     return  <Home></Home>
+    // return <MyList></MyList>
   }
 }
 
