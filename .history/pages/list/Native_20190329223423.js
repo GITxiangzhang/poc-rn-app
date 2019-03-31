@@ -71,6 +71,7 @@ class List extends React.Component {
         data: listData.list
       })
   }
+
   onPress () {
     this.updateEvents()
   }
@@ -107,19 +108,20 @@ const HomeStack = createStackNavigator({ List }, {
       color: '#fff',
       alignSelf: 'center',
       textAlign: 'center',
-      flexGrow: 1
+      // flexGrow: 1
     },
     headerStyle: {
       backgroundColor: '#037aff',
       color: '#fff'
     },
-    // headerRight: <View/>,
+    // headerBackTitleVisible: true,
+    headerRight: <View/>,
     headerLeft: <Button style={{borderWidth: 0}} title="Back" onPress={backPress}></Button>
    
   }
 });
   function backPress () {
-    console.log('oksss')
+
   }
   
 export default createAppContainer(HomeStack);

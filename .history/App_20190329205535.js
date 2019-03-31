@@ -7,8 +7,11 @@
  */
 
 import React, {Component} from 'react';
+// import {Platform, StyleSheet, Text, View} from 'react-native';
+// import Home from './pages/Home'
 import Home from './pages/list/Native'
 import { Platform, StyleSheet, Button, Image, Text, View, ToastAndroid, DeviceEventEmitter, NativeModules, TouchableOpacity } from 'react-native';
+// import MyList from './pages/list/List'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,7 +21,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class App extends Component<Props> {
+class App extends Component<Props> {
 
   constructor(props) {
     super(props);
@@ -49,6 +52,20 @@ export default class App extends Component<Props> {
     return  <Home></Home>
   }
 }
+const HomeStack = createStackNavigator({ App }, {
+  defaultNavigationOptions: {
+    title: 'Welcome1',
+    headerTitleStyle: {
+      color: 'red',
+      alignSelf: 'center'
+    },
+    headerBackTitleVisible: true,
+    headerRight: <View/>,
+    headerLeft: <Button title="back"><Image source={require('./pages/assets/img/back-icon.png')}/></Button>
+  }
+});
+
+export default createAppContainer(HomeStack);
 
 const styles = StyleSheet.create({
   container: {

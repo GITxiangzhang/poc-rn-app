@@ -3,16 +3,12 @@ package com.pocrnapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-//import org.lovebing.reactnative.baidumap.BaiduMapPackage;
-//import org.reactnative.camera.RNCameraPackage;
-//import cn.qiuxiang.react.baidumap.BaiduMapPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.pocrnapp.module.JsReactPackage;
-
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,7 +24,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
-//            new BaiduMapPackage(),
+                    new RNGestureHandlerPackage(),
                     new JsReactPackage()
             );
         }

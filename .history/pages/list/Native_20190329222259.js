@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, Image, View, TouchableOpacity, FlatList, Button, AlertIOS,  NativeModules, DeviceEventEmitter} from 'react-native';
 import listData from '../mockup/home'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
+// import BackImageButton from '../components/BackImageButton'
 const NativeDialog = NativeModules.JsAndroid
 
 class List extends React.Component {
@@ -71,6 +72,7 @@ class List extends React.Component {
         data: listData.list
       })
   }
+
   onPress () {
     this.updateEvents()
   }
@@ -102,26 +104,23 @@ class List extends React.Component {
 
 const HomeStack = createStackNavigator({ List }, {
   defaultNavigationOptions: {
-    title: 'React-native page',
+    title: 'Welcome',
     headerTitleStyle: {
       color: '#fff',
-      alignSelf: 'center',
-      textAlign: 'center',
-      flexGrow: 1
+      alignSelf: 'center'
     },
     headerStyle: {
-      backgroundColor: '#037aff',
+      backgroundColor: '#2656fe',
       color: '#fff'
     },
-    // headerRight: <View/>,
-    headerLeft: <Button style={{borderWidth: 0}} title="Back" onPress={backPress}></Button>
+    // headerBackTitleVisible: true,
+    headerRight: <View/>,
+    headerLeft: <Button title="Back"></Button>
    
   }
 });
-  function backPress () {
-    console.log('oksss')
-  }
-  
+
+
 export default createAppContainer(HomeStack);
 // export default List
 

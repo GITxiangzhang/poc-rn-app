@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 import com.pocrnapp.module.JsAndroidModule;
+
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+
 /**
  * Created by Ryan on 25/03/2019.
  */
@@ -16,15 +18,15 @@ public class RNwebviewActivity extends ReactActivity {
         return "pocRNApp";
     }
 
-    @Override
-    protected ReactActivityDelegate createReactActivityDelegate() {
-        return new ReactActivityDelegate(this, getMainComponentName()) {
-            @Override
-            protected ReactRootView createRootView() {
-               return new RNGestureHandlerEnabledRootView(RNwebviewActivity.this);
-            }
-        };
-    }
+    // @Override
+    // protected ReactActivityDelegate createReactActivityDelegate() {
+    //     return new ReactActivityDelegate(this, getMainComponentName()) {
+    //         @Override
+    //         protected ReactRootView createRootView() {
+    //             return new RNGestureHandlerEnabledRootView(RNwebviewActivity.this);
+    //         }
+    //     };
+    // }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

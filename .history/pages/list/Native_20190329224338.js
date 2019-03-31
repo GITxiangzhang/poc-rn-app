@@ -71,6 +71,7 @@ class List extends React.Component {
         data: listData.list
       })
   }
+  
   onPress () {
     this.updateEvents()
   }

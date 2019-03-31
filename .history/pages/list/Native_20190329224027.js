@@ -71,6 +71,9 @@ class List extends React.Component {
         data: listData.list
       })
   }
+   backPress () {
+    console.log('oksss1111')
+  }
   onPress () {
     this.updateEvents()
   }

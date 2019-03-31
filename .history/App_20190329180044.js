@@ -7,8 +7,11 @@
  */
 
 import React, {Component} from 'react';
+// import {Platform, StyleSheet, Text, View} from 'react-native';
+// import Home from './pages/Home'
 import Home from './pages/list/Native'
-import { Platform, StyleSheet, Button, Image, Text, View, ToastAndroid, DeviceEventEmitter, NativeModules, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Text, View, ToastAndroid, DeviceEventEmitter, NativeModules, TouchableOpacity } from 'react-native';
+// import MyList from './pages/list/List'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',

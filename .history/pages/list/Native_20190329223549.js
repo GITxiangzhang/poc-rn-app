@@ -71,6 +71,7 @@ class List extends React.Component {
         data: listData.list
       })
   }
+
   onPress () {
     this.updateEvents()
   }
@@ -119,7 +120,7 @@ const HomeStack = createStackNavigator({ List }, {
   }
 });
   function backPress () {
-    console.log('oksss')
+
   }
   
 export default createAppContainer(HomeStack);

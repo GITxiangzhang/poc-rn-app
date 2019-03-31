@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity, FlatList, Button, AlertIOS,  NativeModules, DeviceEventEmitter} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, Button, AlertIOS,  NativeModules, DeviceEventEmitter} from 'react-native';
 import listData from '../mockup/home'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 const NativeDialog = NativeModules.JsAndroid
@@ -71,6 +71,7 @@ class List extends React.Component {
         data: listData.list
       })
   }
+
   onPress () {
     this.updateEvents()
   }
@@ -102,26 +103,20 @@ class List extends React.Component {
 
 const HomeStack = createStackNavigator({ List }, {
   defaultNavigationOptions: {
-    title: 'React-native page',
+    title: 'Welcome',
     headerTitleStyle: {
-      color: '#fff',
-      alignSelf: 'center',
-      textAlign: 'center',
-      flexGrow: 1
-    },
-    headerStyle: {
-      backgroundColor: '#037aff',
-      color: '#fff'
-    },
-    // headerRight: <View/>,
-    headerLeft: <Button style={{borderWidth: 0}} title="Back" onPress={backPress}></Button>
-   
+      alignSelf: 'center'
+    }
   }
 });
-  function backPress () {
-    console.log('oksss')
-  }
-  
+// const HomeStack = createStackNavigator({
+//   Home: {
+//     screen: List,
+//   }
+
+// },{
+//   initialRouteName: 'Home'
+// });
 export default createAppContainer(HomeStack);
 // export default List
 

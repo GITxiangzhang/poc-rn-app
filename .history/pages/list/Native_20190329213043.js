@@ -71,6 +71,7 @@ class List extends React.Component {
         data: listData.list
       })
   }
+
   onPress () {
     this.updateEvents()
   }
@@ -102,26 +103,24 @@ class List extends React.Component {
 
 const HomeStack = createStackNavigator({ List }, {
   defaultNavigationOptions: {
-    title: 'React-native page',
+    title: 'Welcome',
     headerTitleStyle: {
       color: '#fff',
-      alignSelf: 'center',
-      textAlign: 'center',
-      flexGrow: 1
+      alignSelf: 'center'
     },
     headerStyle: {
-      backgroundColor: '#037aff',
-      color: '#fff'
+      backgroundColor: '#2656fe',
     },
-    // headerRight: <View/>,
-    headerLeft: <Button style={{borderWidth: 0}} title="Back" onPress={backPress}></Button>
-   
+    headerBackTitleVisible: true,
+    headerLeft: <TouchableOpacity >
+      <View>
+        <Image style={{backgroundColor: 'red'}} source={require('../assets/img/back-icon.png')}/>
+        <Text>back</Text>
+      </View>
+      </TouchableOpacity>
   }
 });
-  function backPress () {
-    console.log('oksss')
-  }
-  
+
 export default createAppContainer(HomeStack);
 // export default List
 

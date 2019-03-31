@@ -71,6 +71,7 @@ class List extends React.Component {
         data: listData.list
       })
   }
+
   onPress () {
     this.updateEvents()
   }
@@ -120,6 +121,18 @@ const HomeStack = createStackNavigator({ List }, {
 });
   function backPress () {
     console.log('oksss')
+    NativeModules.JsAndroid.showDialogFragment(msg => {
+      this.setState(prevState => ({
+        data: [...prevState.data,
+          {
+            id: prevState.data.length + 1,
+            value: msg
+          }
+        ]
+      }))
+    }, err => {
+      console.log(err);
+    })
   }
   
 export default createAppContainer(HomeStack);
