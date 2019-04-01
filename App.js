@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Home from './pages/list/Native'
 import { Platform, StyleSheet, Button, Image, Text, View, ToastAndroid, DeviceEventEmitter, NativeModules, TouchableOpacity } from 'react-native';
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
@@ -27,7 +27,8 @@ export default class App extends Component<Props> {
     }
   }
   clickFun() {
-    NativeModules.JsAndroid.showDialogFragment(msg => { console.log(msg); }, err => { console.log(err); })
+    // NativeModules.JsAndroid.showDialogFragment(msg => { console.log(msg); }, err => { console.log(err); })
+    NativeModules.JsAndroid.finishRNActivity()
   }
   componentWillMount() {
     //注册接收器
@@ -46,7 +47,7 @@ export default class App extends Component<Props> {
     //     </TouchableOpacity>
     //   </View>
     // )
-    return  <Home></Home>
+    return <Home></Home>
   }
 }
 

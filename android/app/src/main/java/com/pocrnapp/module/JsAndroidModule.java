@@ -43,7 +43,8 @@ public class JsAndroidModule extends ReactContextBaseJavaModule {
                     successBack.invoke(itemName);
                 }
             });
-            fragment.show(((AppCompatActivity) fragmentContext).getSupportFragmentManager(), "addItem");
+            fragment.show(((AppCompatActivity) fragmentContext).getSupportFragmentManager(),
+                    "addItem");
         } catch (Exception e) {
             erroBack.invoke(e.getMessage());
         }
@@ -59,6 +60,13 @@ public class JsAndroidModule extends ReactContextBaseJavaModule {
             successBack.invoke(result);
         } catch (Exception e) {
             erroBack.invoke(e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void finishRNActivity() {
+        if (fragmentContext != null) {
+            ((Activity) fragmentContext).finish();
         }
     }
 

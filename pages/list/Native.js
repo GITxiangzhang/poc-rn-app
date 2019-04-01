@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity, FlatList, Button, AlertIOS,  NativeModules, DeviceEventEmitter} from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity, FlatList, Button, AlertIOS, NativeModules, DeviceEventEmitter } from 'react-native';
 import listData from '../mockup/home'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 const NativeDialog = NativeModules.JsAndroid
 
 class List extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       data: []
@@ -16,42 +16,43 @@ class List extends React.Component {
     this.updateEvents = this.updateEvents.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // this.props.navigation.navigate('List')
     this.fetchData()
     this.testDataListener = DeviceEventEmitter.addListener('pageData', e => {//for Android
       //更新状态及其他操作
       this.setState(prevState => ({
         data: [...prevState.data,
-          {
-            id: prevState.data.length + 1,
-            value: e.data
-          }
+        {
+          id: prevState.data.length + 1,
+          value: e.data
+        }
         ]
       }))
     });
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.testDataListener.remove()
   }
 
   updateEvents() {
-    NativeModules.JsAndroid.showDialogFragment(msg => {
-      this.setState(prevState => ({
-        data: [...prevState.data,
-          {
-            id: prevState.data.length + 1,
-            value: msg
-          }
-        ]
-      }))
-    }, err => {
-      console.log(err);
-    })
+    // NativeModules.JsAndroid.showDialogFragment(msg => {
+    //   this.setState(prevState => ({
+    //     data: [...prevState.data,
+    //       {
+    //         id: prevState.data.length + 1,
+    //         value: msg
+    //       }
+    //     ]
+    //   }))
+    // }, err => {
+    //   console.log(err);
+    // })
+    NativeModules.JsAndroid.finishRNActivity();
   }
 
-  fetchData () {
+  fetchData() {
     let url = '../mockup/home.json'
 
     // fetch(url, {
@@ -67,11 +68,11 @@ class List extends React.Component {
     //   .catch(err => {
     //     console.log('err: '+ err)
     //   })
-      this.setState({
-        data: listData.list
-      })
+    this.setState({
+      data: listData.list
+    })
   }
-  onPress () {
+  onPress() {
     this.updateEvents()
   }
 
@@ -80,19 +81,19 @@ class List extends React.Component {
       <View style={styles.container}>
         <View style={styles.dialogContainer}>
           <View style={styles.dialog}>
-          <TouchableOpacity
-            style={styles.button}
-            underlayColor="yellow"
-            onPress={this.onPress}>
+            <TouchableOpacity
+              style={styles.button}
+              underlayColor="yellow"
+              onPress={this.onPress}>
               <Text style={styles.text}>popup native dialog</Text>
-          </TouchableOpacity>
+            </TouchableOpacity>
             {/* <Button style={styles.button} onPress={this.onPress} title="popup native dialog"></Button> */}
           </View>
         </View>
         <View style={styles.flatlist}>
           <FlatList
             data={this.state.data}
-            renderItem = {({item}) => <Text style={styles.item}>{item.value}</Text>}
+            renderItem={({ item }) => <Text style={styles.item}>{item.value}</Text>}
           />
         </View>
       </View>
@@ -114,14 +115,14 @@ const HomeStack = createStackNavigator({ List }, {
       color: '#fff'
     },
     // headerRight: <View/>,
-    headerLeft: <Button style={{borderWidth: 0}} title="Back" onPress={backPress}></Button>
-   
+    headerLeft: <Button style={{ borderWidth: 0 }} title="Back" onPress={backPress}></Button>
+
   }
 });
-  function backPress () {
-    console.log('oksss')
-  }
-  
+function backPress() {
+  console.log('oksss')
+}
+
 export default createAppContainer(HomeStack);
 // export default List
 
