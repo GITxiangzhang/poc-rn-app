@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.pocrnapp.R;
 import com.pocrnapp.detection.DetectorActivity;
 import com.pocrnapp.ui.activity.CameraActivity;
+import com.pocrnapp.ui.activity.EncryptActivity;
 import com.pocrnapp.ui.activity.MapActivity;
 import com.pocrnapp.ui.activity.RNwebviewActivity;
 
@@ -38,7 +39,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         webPageLayout = getActivity().findViewById(R.id.layout_web);
         mapLayout = getActivity().findViewById(R.id.layout_map);
         cameraLayout = getActivity().findViewById(R.id.layout_camera);
-        reservedLayout = getActivity().findViewById(R.id.layout_reserved);
+        reservedLayout = getActivity().findViewById(R.id.layout_encrypt_photo);
         initEvent();
     }
 
@@ -64,7 +65,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //跳转至camera页面
                 jumpTo(DetectorActivity.class);
                 break;
-            case R.id.layout_reserved:
+            case R.id.layout_encrypt_photo:
+                jumpTo(EncryptActivity.class);
                 break;
 
 

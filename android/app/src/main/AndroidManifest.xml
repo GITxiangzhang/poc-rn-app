@@ -52,6 +52,12 @@
             android:name=".detection.DetectorActivity"
             android:label="@string/activity_name_detection"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.EncryptActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".ui.activity.TakeEncryptPhotoActivity"
+            android:theme="@style/AppTheme"/>
         <service android:name="com.amap.api.location.APSService"/>
     </application>
 

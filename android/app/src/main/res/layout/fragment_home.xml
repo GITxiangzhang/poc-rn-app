@@ -164,7 +164,7 @@
 
             <!--预留功能 -->
             <RelativeLayout
-                android:id="@+id/layout_reserved"
+                android:id="@+id/layout_encrypt_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -176,7 +176,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="#F0F8FF"
-                    android:src="@drawable/smile"/>
+                    android:src="@drawable/lock"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -188,10 +188,10 @@
 
                     <TextView
                         android:paddingBottom="5dp"
-                        android:id="@+id/tv_reserved_1"
+                        android:id="@+id/tv_encrypt_photo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="reserved"
+                        android:text="encrypt photo"
                         android:textColor="#1296db"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
@@ -199,10 +199,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_reserved_1"
-                        android:layout_alignLeft="@id/tv_reserved_1"
+                        android:layout_below="@id/tv_encrypt_photo"
+                        android:layout_alignLeft="@id/tv_encrypt_photo"
                         android:paddingTop="3dp"
-                        android:text="reserved"
+                        android:text="take photo and encrypt "
                         android:textColor="#B0C4DE"/>
                 </LinearLayout>
             </RelativeLayout>
