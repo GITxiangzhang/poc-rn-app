@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, Image, View, TouchableOpacity, FlatList, Button, AlertIOS, NativeModules, DeviceEventEmitter } from 'react-native';
 import listData from '../mockup/home'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
-const NativeDialog = NativeModules.JsAndroid
+// const NativeDialog = NativeModules.JsAndroid
 
 class List extends React.Component {
   constructor(props) {
@@ -17,7 +17,6 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.navigation.navigate('List')
     this.fetchData()
     this.testDataListener = DeviceEventEmitter.addListener('pageData', e => {//for Android
       //更新状态及其他操作
@@ -37,19 +36,19 @@ class List extends React.Component {
   }
 
   updateEvents() {
-    // NativeModules.JsAndroid.showDialogFragment(msg => {
-    //   this.setState(prevState => ({
-    //     data: [...prevState.data,
-    //       {
-    //         id: prevState.data.length + 1,
-    //         value: msg
-    //       }
-    //     ]
-    //   }))
-    // }, err => {
-    //   console.log(err);
-    // })
-    NativeModules.JsAndroid.finishRNActivity();
+    NativeModules.JsAndroid.showDialogFragment(msg => {
+      this.setState(prevState => ({
+        data: [...prevState.data,
+          {
+            id: prevState.data.length + 1,
+            value: msg
+          }
+        ]
+      }))
+    }, err => {
+      console.log(err);
+    })
+    // NativeModules.JsAndroid.finishRNActivity();
   }
 
   fetchData() {
@@ -87,7 +86,6 @@ class List extends React.Component {
               onPress={this.onPress}>
               <Text style={styles.text}>popup native dialog</Text>
             </TouchableOpacity>
-            {/* <Button style={styles.button} onPress={this.onPress} title="popup native dialog"></Button> */}
           </View>
         </View>
         <View style={styles.flatlist}>
@@ -114,18 +112,15 @@ const HomeStack = createStackNavigator({ List }, {
       backgroundColor: '#037aff',
       color: '#fff'
     },
-    // headerRight: <View/>,
     headerLeft: <Button style={{ borderWidth: 0 }} title="Back" onPress={backPress}></Button>
 
   }
 });
 function backPress() {
-  console.log('oksss')
   NativeModules.JsAndroid.finishRNActivity()
 }
 
 export default createAppContainer(HomeStack);
-// export default List
 
 const styles = StyleSheet.create({
   container: {
