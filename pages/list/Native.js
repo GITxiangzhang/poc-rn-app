@@ -121,6 +121,7 @@ const HomeStack = createStackNavigator({ List }, {
 });
 function backPress() {
   console.log('oksss')
+  NativeModules.JsAndroid.finishRNActivity()
 }
 
 export default createAppContainer(HomeStack);
