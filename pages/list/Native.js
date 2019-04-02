@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity, FlatList, Button, AlertIOS, NativeModules, DeviceEventEmitter } from 'react-native';
+import { Platform, StyleSheet, Text, Image, View, TouchableOpacity, FlatList, Button, AlertIOS, NativeModules, DeviceEventEmitter } from 'react-native';
 import listData from '../mockup/home'
 import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 // const NativeDialog = NativeModules.JsAndroid
@@ -36,18 +36,36 @@ class List extends React.Component {
   }
 
   updateEvents() {
-    NativeModules.JsAndroid.showDialogFragment(msg => {
-      this.setState(prevState => ({
-        data: [...prevState.data,
-          {
-            id: prevState.data.length + 1,
-            value: msg
-          }
-        ]
-      }))
-    }, err => {
-      console.log(err);
-    })
+    if (Platform.OS === 'ios') {
+      NativeModules.ReactNativeContainerVC.showWithCallback((data) => {
+        if (!data) {
+          return false
+        }
+        this.setState(prevState => ({
+          data: [...prevState.data,
+            {
+              id: prevState.data.length + 1,
+              value: data
+            }
+          ]
+        }))
+        console.log('data: ' + data)
+      })
+    } else {
+      NativeModules.JsAndroid.showDialogFragment(msg => {
+        this.setState(prevState => ({
+          data: [...prevState.data,
+            {
+              id: prevState.data.length + 1,
+              value: msg
+            }
+          ]
+        }))
+      }, err => {
+        console.log(err);
+      })
+
+    }
     // NativeModules.JsAndroid.finishRNActivity();
   }
 
@@ -120,7 +138,15 @@ function backPress() {
   NativeModules.JsAndroid.finishRNActivity()
 }
 
-export default createAppContainer(HomeStack);
+let ListContainer = null
+if (Platform.OS === 'ios') {
+  ListContainer = List
+} else {
+  ListContainer = createAppContainer(HomeStack)
+}
+
+export default ListContainer
+
 
 const styles = StyleSheet.create({
   container: {

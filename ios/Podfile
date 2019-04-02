@@ -1,9 +1,18 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
+inhibit_all_warnings!
 
 target 'pocRNApp' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
+
+  pod 'Masonry'
+  pod 'AMap3DMap'
+  pod 'AMapLocation'
+  pod 'AMapSearch'
+  pod 'TZImagePickerController'
+  pod 'KLCPopup'
+  pod 'FMDB'
 
   # Pods for pocRNApp
   pod 'React', :path => '../node_modules/react-native', :subspecs => [
@@ -12,6 +21,7 @@ target 'pocRNApp' do
     'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
     'RCTText',
     'RCTNetwork',
+    'RCTLinkingIOS',
     'RCTWebSocket', # Needed for debugging
     'RCTAnimation', # Needed for FlatList and animations running on native UI thread
     # Add any other subspecs you want to use in your project

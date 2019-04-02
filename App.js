@@ -9,44 +9,11 @@
 import React, { Component } from 'react';
 import Home from './pages/list/Native'
 import { Platform, StyleSheet, Button, Image, Text, View, ToastAndroid, DeviceEventEmitter, NativeModules, TouchableOpacity } from 'react-native';
-import { createAppContainer, createDrawerNavigator, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 type Props = {};
 export default class App extends Component<Props> {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      greetings: '这是页面1'
-    }
-  }
-  clickFun() {
-    // NativeModules.JsAndroid.showDialogFragment(msg => { console.log(msg); }, err => { console.log(err); })
-    NativeModules.JsAndroid.finishRNActivity()
-  }
-  componentWillMount() {
-    //注册接收器
-    this.testDataListener = DeviceEventEmitter.addListener('pageData', e => {//for Android
-      //更新状态及其他操作
-      this.setState({
-        greetings: '这是页面' + e.data,
-      })
-    });
-  }
   render() {
-    // return (
-    //   <View style={styles.container}>
-    //     <TouchableOpacity onPress={this.clickFun}>
-    //       <Text style={styles.welcome}>{this.state.greetings}</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // )
     return <Home></Home>
   }
 }
