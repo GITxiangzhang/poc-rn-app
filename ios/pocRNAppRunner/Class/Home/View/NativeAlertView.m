@@ -33,7 +33,6 @@
                                dismissOnContentTouch:NO];
     popup.dimmedMaskAlpha = 0.5;
     self.customPopup = popup;
-//    self.nativeTF.text = @"";
     self.completeEdit = complete;
     [popup showWithLayout:layout];
 }
