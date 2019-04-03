@@ -23,7 +23,9 @@
 
 - (void)showActionPopViewComplete:(CompleteEdit)complete {
 
+  dispatch_async(dispatch_get_main_queue(), ^{
     [self.surebtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+  });
     KLCPopupLayout layout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter, KLCPopupVerticalLayoutCenter);
     KLCPopup *popup = [KLCPopup popupWithContentView:self
                                             showType:KLCPopupShowTypeShrinkIn
