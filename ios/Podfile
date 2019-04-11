@@ -35,7 +35,7 @@ target 'pocRNApp' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   # pod 'react-native-baidumap-sdk', path: '../node_modules/react-native-baidumap-sdk/lib/ios',:subspaces => ['BaiduMapLocation']
   pod 'react-native-baidu-map', :podspec => '../node_modules/react-native-baidu-map/ios/react-native-baidu-map.podspec'
-  pod 'react-native-camera', path: '../node_modules/react-native-camera'
+  # pod 'react-native-camera', path: '../node_modules/react-native-camera'
 
   # target 'pocRNApp-tvOSTests' do
   #   inherit! :search_paths

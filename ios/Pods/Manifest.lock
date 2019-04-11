@@ -2,7 +2,7 @@ PODS:
   - AMap3DMap (6.7.0):
     - AMapFoundation (~> 1.5)
   - AMapFoundation (1.5.6)
-  - AMapLocation (2.6.1):
+  - AMapLocation (2.6.2):
     - AMapFoundation (~> 1.4)
   - AMapSearch (6.6.0):
     - AMapFoundation (~> 1.4)
@@ -25,14 +25,6 @@ PODS:
   - react-native-baidu-map (1.0.5):
     - BaiduMapKit (= 4.2.0)
     - BMKLocationKit (= 1.3.0.2)
-    - React
-  - react-native-camera (2.1.0):
-    - React
-    - react-native-camera/RCT (= 2.1.0)
-    - react-native-camera/RN (= 2.1.0)
-  - react-native-camera/RCT (2.1.0):
-    - React
-  - react-native-camera/RN (2.1.0):
     - React
   - React/Core (0.59.1):
     - yoga (= 0.59.1.React)
@@ -90,7 +82,6 @@ DEPENDENCIES:
   - KLCPopup
   - Masonry
   - react-native-baidu-map (from `../node_modules/react-native-baidu-map/ios/react-native-baidu-map.podspec`)
-  - react-native-camera (from `../node_modules/react-native-camera`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -127,15 +118,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-baidu-map:
     :podspec: "../node_modules/react-native-baidu-map/ios/react-native-baidu-map.podspec"
-  react-native-camera:
-    :path: "../node_modules/react-native-camera"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
   AMap3DMap: 7bb992e6bfb99e34e6c7a368958dde9d743a23f1
   AMapFoundation: 20fce2a12cd152e1092afdd04379cdac21932185
-  AMapLocation: cf024b53dc03663efb4ea4bcce27d4cce58bb97a
+  AMapLocation: 89a7e4eb6040d32ba73c77a4966ecc66e46aa7c3
   AMapSearch: def5983c8ca1a6d7430970046dc814f6e337621d
   BaiduMapKit: b6a8f31b3d2e4e5cad4084512a0d9a3878638272
   BMKLocationKit: 6c47273f985609be0a0785f2f6f12bb7c1b7e8b6
@@ -148,10 +137,9 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   React: 34a405ead72252839fdc4afc1f972a7ed984af84
   react-native-baidu-map: 31c52e4cd3f64ad202e4e1c03949190e4e8f8c79
-  react-native-camera: 440e3c99804044445f9fc8dbf26cd52dcf2f0a03
   TZImagePickerController: 7850b158d025065b162a1a963d445040b828abc9
   yoga: 8fb47f180b19b0dadb285a09e4c74c8a41721d3a
 
-PODFILE CHECKSUM: 471b2281cf7eca7113807b1dc52a65a65590e141
+PODFILE CHECKSUM: 212c2a9eb60746f9d26eb06eef81a16f83a13944
 
 COCOAPODS: 1.6.1
