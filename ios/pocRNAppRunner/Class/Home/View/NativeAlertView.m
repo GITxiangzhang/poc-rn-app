@@ -8,6 +8,8 @@
 
 #import "NativeAlertView.h"
 #import <KLCPopup/KLCPopup.h>
+#import "BaseServerConfig.h"
+#import <TZImagePickerController/UIView+Layout.h>
 
 @interface NativeAlertView()
 
@@ -20,6 +22,20 @@
 @end
 
 @implementation NativeAlertView
+
+- (void)dealloc {
+  
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+  if (self = [super initWithCoder:aDecoder]) {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+  }
+  return self;
+}
 
 - (void)showActionPopViewComplete:(CompleteEdit)complete {
 
@@ -44,6 +60,34 @@
         self.completeEdit(self.nativeTF.text);
     }
     [self.customPopup dismiss:YES];
+}
+
+#pragma mark -- keyboardWillShow && keyboardWillHide --
+//监听的键盘升起响应
+- (void)keyboardWillShow:(NSNotification *)notification {
+  
+  NSDictionary *userInfo = [notification userInfo];
+  NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+  CGRect keyboardRect = [value CGRectValue];
+  
+  if (keyboardRect.size.height > (kScreenHeight - self.superview.tz_bottom)) {
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    self.superview.tz_bottom = (kScreenHeight - keyboardRect.size.height - 5);
+    [UIView commitAnimations];
+  }
+}
+
+//键盘消失
+- (void)keyboardWillHide {
+  
+  if(self.tz_centerY < kScreenHeight/2.f) {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    self.superview.center = CGPointMake(kScreenWidth/2.f, kScreenHeight/2.f);
+    [UIView commitAnimations];
+  }
 }
 
 @end

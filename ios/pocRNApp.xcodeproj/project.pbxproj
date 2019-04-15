@@ -589,8 +589,8 @@
 		0BC40F3D22526E5F00E341C2 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				0BC40F3E22526E5F00E341C2 /* PocRootViewController.m */,
 				0BC40F3F22526E5F00E341C2 /* PocRootViewController.h */,
+				0BC40F3E22526E5F00E341C2 /* PocRootViewController.m */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -690,8 +690,8 @@
 		0BC40F6322526E5F00E341C2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0BC40F6422526E5F00E341C2 /* WebViewController.m */,
 				0BC40F6522526E5F00E341C2 /* WebViewController.h */,
+				0BC40F6422526E5F00E341C2 /* WebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1158,6 +1158,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
